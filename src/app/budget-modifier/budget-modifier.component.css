@@ -1,0 +1,21 @@
+.us {
+  display: inline-block;
+  position: relative;
+}
+
+.us::before {
+  content: "$";
+  padding: 0.5rem 0.2rem;
+  position: absolute;
+}
+
+.uk {
+  display: inline-block;
+  position: relative;
+}
+
+.uk::before {
+  content: "£";
+  padding: 0.5rem 0.2rem;
+  position: absolute;
+}

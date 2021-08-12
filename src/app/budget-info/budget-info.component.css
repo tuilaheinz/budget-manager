@@ -1,0 +1,13 @@
+.budget {
+  display: flex;
+  flex-direction: row;
+}
+
+.budget-detail {
+  border: rgb(216, 213, 213) solid 1px;
+  width: 300px;
+}
+
+.currency {
+  width: 200px;
+}

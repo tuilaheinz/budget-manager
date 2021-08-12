@@ -1,0 +1,5 @@
+<div class="main">
+  <app-budget-info [currencies]="currencies" [budget]="budget" (onCurrencyChange)="onChange($event)"></app-budget-info>
+  <app-budget-modifier [selectedCurrencyCode]="selectedCurrencyCode" [budget]="budget" (onDebit)="debit($event)"
+    (onCredit)="credit($event)"></app-budget-modifier>
+</div>

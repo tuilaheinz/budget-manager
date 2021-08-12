@@ -1,0 +1,33 @@
+<div class="mt-2 col-10">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+            <a ngbNavLink>Debit</a>
+            <ng-template ngbNavContent>
+                <div class="col-12">
+                    <p *ngIf="debitAmount > budget" class="text-danger">Error: You do not have enough funds
+                </div>
+                <div class="col-8"> <small>Debit amount</small>
+                    <div [ngClass]="selectedCurrencyCode == 'US' ? 'us' : 'uk'">
+                        <input type="number" class="form-control" id="debitAmount" [(ngModel)]="debitAmount" min="0"
+                            (input)="onDebitChange($event)">
+                    </div>
+                    <button class="btn btn-primary mt-2" (click)="debit()" [disabled]="isDisabled">Submit</button>
+                </div>
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+            <a ngbNavLink>Credit</a>
+            <ng-template ngbNavContent>
+                <div class="col-8">
+                    <small>Credit amount</small>
+                    <div [ngClass]="selectedCurrencyCode == 'US' ? 'us' : 'uk'">
+                        <input type=" number" class="form-control" id="creditAmount" [(ngModel)]="creditAmount"
+                            min="0" />
+                    </div>
+                    <button class="btn btn-primary mt-2" (click)="credit()">Submit</button>
+                </div>
+            </ng-template>
+        </li>
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
