@@ -1,9 +1,23 @@
-<div class="main">
-  <div class="budget mt-2">
-    <app-budget-info [budget]="budget" [selectedCurrency]="selectedCurrency"></app-budget-info>
-    <app-currency-changer [currencies]="currencies"  (onCurrencyChange)="onChange($event)"></app-currency-changer>
-</div>
+<!-- <ul class="nav nav-pills card-header-pills">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/home">Home
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/budget-manager">Budget Manager
+    </a>
+  </li>
+</ul>
+<router-outlet></router-outlet> -->
 
-  <app-budget-modifier [selectedCurrency]="selectedCurrency" [budget]="budget" (onDebit)="debit($event)"
-    (onCredit)="credit($event)"></app-budget-modifier>
-</div>
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li ngbNavItem>
+    <a ngbNavLink routerLink="/home">Home
+    </a>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink routerLink="/budget-manager">Budget Manager
+    </a>
+  </li>
+</ul>
+<router-outlet></router-outlet>

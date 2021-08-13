@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Currency } from '../models';
+import { Currency } from '../../models';
 
 @Component({
   selector: 'app-currency-changer',

@@ -1,0 +1,11 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    max-width: 500px;
+  }
+  
+  .budget {
+    display: flex;
+    flex-direction: row;
+  }
