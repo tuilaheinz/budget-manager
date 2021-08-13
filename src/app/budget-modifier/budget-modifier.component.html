@@ -7,7 +7,7 @@
                     <p *ngIf="debitAmount > budget" class="text-danger">Error: You do not have enough funds
                 </div>
                 <div class="col-8"> <small>Debit amount</small>
-                    <div [ngClass]="selectedCurrencyCode == 'US' ? 'us' : 'uk'">
+                    <div [ngClass]="selectedCurrency.code | lowercase">
                         <input type="number" class="form-control" id="debitAmount" [(ngModel)]="debitAmount" min="0"
                             (input)="onDebitChange($event)">
                     </div>
@@ -20,7 +20,7 @@
             <ng-template ngbNavContent>
                 <div class="col-8">
                     <small>Credit amount</small>
-                    <div [ngClass]="selectedCurrencyCode == 'US' ? 'us' : 'uk'">
+                    <div [ngClass]="selectedCurrency.code | lowercase">
                         <input type=" number" class="form-control" id="creditAmount" [(ngModel)]="creditAmount"
                             min="0" />
                     </div>

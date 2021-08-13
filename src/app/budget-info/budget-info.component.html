@@ -1,13 +1,6 @@
-<div class="budget mt-2">
-    <div class="budget-detail p-1">
-        <h4 class="m-1">My budget:</h4>
-        <h1 [ngClass]="budget > 500 ? 'text-success' : (budget > 100 ? 'text-warning' : 'text-danger')">
-            {{ selectedCurrency?.symbol }} {{ budget }}
-        </h1>
-    </div>
-    <div class="currency ml-1">
-        <select class="p-1 w-50" #currency (change)="onChange(currency.value)">
-            <option *ngFor="let c of currencies">{{c.code}}</option>
-        </select>
-    </div>
+<div class="budget-detail p-1">
+    <h4 class="m-1">My budget:</h4>
+    <h1 [ngClass]="budget > 500 ? 'text-success' : (budget > 100 ? 'text-warning' : 'text-danger')">
+        {{ selectedCurrency?.symbol }} {{ budget }}
+    </h1>
 </div>

@@ -6,9 +6,10 @@ import { BudgetInfoComponent } from './budget-info/budget-info.component';
 import { BudgetModiferComponent } from './budget-modifier/budget-modifier.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CurrencyChangerComponent } from './currency-changer/currency-changer.component';
 
 @NgModule({
-  declarations: [AppComponent, BudgetInfoComponent, BudgetModiferComponent],
+  declarations: [AppComponent, BudgetInfoComponent, BudgetModiferComponent, CurrencyChangerComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -13,17 +13,16 @@ export class AppComponent {
     { code: 'US', symbol: '$' },
     { code: 'UK', symbol: '£' },
   ];
-  selectedCurrencyCode!: string;
+  selectedCurrency: Currency;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.selectedCurrencyCode = this.currencies[0].code;
+    this.selectedCurrency = this.currencies[0];
   }
 
   onChange(value: Currency) {
-    this.selectedCurrencyCode =
-      this.currencies.find((c) => c.code == value.code)?.code ?? '';
+    this.selectedCurrency = value;
   }
 
   debit(value: number) {

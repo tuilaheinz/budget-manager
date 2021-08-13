@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Currency } from '../models';
 
 @Component({
   selector: 'app-budget-modifier',
@@ -8,7 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 export class BudgetModiferComponent {
   @Input() budget!: number;
-  @Input() selectedCurrencyCode: string = '';
+  @Input() selectedCurrency: Currency;
   @Output() onDebit = new EventEmitter<number>();
   @Output() onCredit = new EventEmitter<number>();
   debitAmount: number = 0;
