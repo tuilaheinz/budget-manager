@@ -1,0 +1,5 @@
+<div class="currency ml-1">
+    <select class="p-1 w-50" #currency (change)="onChange(currency.value)">
+        <option *ngFor="let c of currencies">{{c.code}}</option>
+    </select>
+</div>
