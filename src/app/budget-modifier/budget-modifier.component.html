@@ -4,14 +4,14 @@
             <a ngbNavLink>Debit</a>
             <ng-template ngbNavContent>
                 <div class="col-12">
-                    <p *ngIf="debitAmount > budget" class="text-danger">Error: You do not have enough funds
+                    <p *ngIf="debitAmount > budget" class="text-danger error">Error: You do not have enough funds
                 </div>
                 <div class="col-8"> <small>Debit amount</small>
                     <div [ngClass]="selectedCurrency.code | lowercase">
                         <input type="number" class="form-control" id="debitAmount" [(ngModel)]="debitAmount" min="0"
                             (input)="onDebitChange($event)">
                     </div>
-                    <button class="btn btn-primary mt-2" (click)="debit()" [disabled]="isDisabled">Submit</button>
+                    <button id="debitBtn" class="btn btn-primary mt-2" (click)="debit()" [disabled]="isDisabled">Submit</button>
                 </div>
             </ng-template>
         </li>
