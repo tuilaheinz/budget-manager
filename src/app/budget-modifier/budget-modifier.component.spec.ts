@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from '../app.component';
@@ -14,7 +14,8 @@ describe('BudgetModiferComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         NgbNavModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
       ],
       declarations: [AppComponent, BudgetModiferComponent]
     })

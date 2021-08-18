@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Currency } from '../models';
 
 @Component({
@@ -7,37 +8,49 @@ import { Currency } from '../models';
   styleUrls: ['./budget-modifier.component.css'],
 })
 
-export class BudgetModiferComponent {
+export class BudgetModiferComponent implements OnInit, OnChanges {
   @Input() budget!: number;
   @Input() selectedCurrency: Currency;
   @Output() onDebit = new EventEmitter<number>();
   @Output() onCredit = new EventEmitter<number>();
-  debitAmount: number = 0;
-  creditAmount: number = 0;
   active = 1;
   isDisabled = false;
+  form: FormGroup;
 
   constructor() { }
 
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      debitAmount: new FormControl(null, [
+        (control: AbstractControl) => Validators.max(this.budget)(control)
+      ]),
+      creditAmount: new FormControl(null)
+    })
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes.budget?.firstChange) {
+      this.form.get('debitAmount').updateValueAndValidity();
+    }
+  }
+
   debit(): void {
-    if (this.debitAmount < 0) {
+    let debitAmount = this.form.get('debitAmount').value;
+    if (!debitAmount || debitAmount <= 0) {
       return;
     }
 
-    this.onDebit.emit(this.debitAmount);
-    this.debitAmount = 0;
+    this.onDebit.emit(debitAmount);
+    this.form.patchValue({ debitAmount: null });
   }
 
   credit(): void {
-    if (this.creditAmount < 0) {
+    let creditAmount = this.form.get('creditAmount').value;
+    if (!creditAmount || creditAmount <= 0) {
       return;
     }
 
-    this.onCredit.emit(this.creditAmount);
-    this.creditAmount = 0;
-  }
-
-  onDebitChange(value: any) {
-    this.isDisabled = +value.target.value > this.budget;
+    this.onCredit.emit(creditAmount);
+    this.form.patchValue({ creditAmount: null });
   }
 }
