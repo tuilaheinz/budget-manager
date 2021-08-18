@@ -22,6 +22,7 @@ export class BudgetModiferComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.form = new FormGroup({
       debitAmount: new FormControl(null, [
+        Validators.required,
         (control: AbstractControl) => Validators.max(this.budget)(control)
       ]),
       creditAmount: new FormControl(null)
@@ -52,5 +53,20 @@ export class BudgetModiferComponent implements OnInit, OnChanges {
 
     this.onCredit.emit(creditAmount);
     this.form.patchValue({ creditAmount: null });
+  }
+
+  activeIdChange(activeId: number) {
+    switch (activeId) {
+      case 1:
+        this.form.get('debitAmount').setValidators([Validators.required, (control: AbstractControl) => Validators.max(this.budget)(control)]);
+        this.form.get('creditAmount').clearValidators();
+        this.form.get('creditAmount').updateValueAndValidity();
+        break;
+      case 2:
+        this.form.get('debitAmount').clearValidators();
+        this.form.get('debitAmount').updateValueAndValidity();
+        this.form.get('creditAmount').setValidators(Validators.required);
+        break
+    }
   }
 }
